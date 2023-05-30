@@ -1,0 +1,37 @@
+version: '3'
+services:
+  zabbix-server:
+    image: zabbix/zabbix-appliance:latest
+    container_name: zabbix-server
+    restart: always
+    ports:
+      - 10051:10051
+      - 80:80
+    volumes:
+      - zabbix-modules:/var/lib/zabbix/modules
+      - zabbix-ssl_ca:/var/lib/zabbix/ssl/ssl_ca
+      - zabbix-certs:/var/lib/zabbix/ssl/certs
+      - zabbix-nginx:/etc/ssl/nginx
+      - zabbix-mysql:/var/lib/mysql
+      - zabbix-enc:/var/lib/zabbix/enc
+      - zabbix-mids:/var/lib/zabbix/mibs
+      - zabbix-snmp:/var/lib/zabbix/snmptraps
+      - zabbix-sslkeys:/var/lib/zabbix/ssl/keys
+      - zabbix-alert-script:/usr/lib/zabbix/alertscripts
+      - zabbix-externalscripts:/usr/lib/zabbix/externalscripts
+      - zabbix-ssh-keys:/var/lib/zabbix/ssh_keys
+      - zabbix-var:/var
+volumes:
+  zabbix-modules:
+  zabbix-ssl_ca:
+  zabbix-certs:
+  zabbix-nginx:
+  zabbix-mysql:
+  zabbix-enc:
+  zabbix-mids:
+  zabbix-snmp:
+  zabbix-sslkeys:
+  zabbix-alert-script:
+  zabbix-externalscripts:
+  zabbix-ssh-keys:
+  zabbix-var:
